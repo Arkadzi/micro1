@@ -44,7 +44,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
-		<finalName>lab1</finalName>
+		<finalName>calculator</finalName>
 	</build>
 
 </project>
