@@ -44,7 +44,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
-		<finalName>calculator</finalName>
+		<finalName>api</finalName>
 	</build>
 
 </project>

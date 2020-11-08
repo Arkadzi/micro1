@@ -1,4 +1,4 @@
 FROM openjdk:8
-ADD target/calculator.jar /calculator.jar
-EXPOSE 8085
-ENTRYPOINT ["java", "-jar", "calculator.jar"]
+ADD target/api.jar /api.jar
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "api.jar"]

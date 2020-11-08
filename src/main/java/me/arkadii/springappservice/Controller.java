@@ -1,23 +1,32 @@
 package me.arkadii.springappservice;
 
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.io.IOException;
 
 @RestController
-@RequestMapping("/api/calculate")
+@RequestMapping("/api")
 public class Controller {
-    @GetMapping("/pow")
+    private static HttpEntity<?> getHeaders() throws IOException {
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
+        return new HttpEntity<>(headers);
+    }
+
+    @GetMapping("/calculator")
     @ResponseBody
-    public Map<String, Object> calculate(@RequestParam("value") String value) {
-        HashMap<String, Object> stringObjectHashMap = new HashMap<>();
+    public String calculate(@RequestParam("value") String value) {
+        String baseUrl = "http://calc:8085/api/calculate/pow?value=" + value;
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<String> response = null;
         try {
-            int intValue = Integer.parseInt(value);
-            stringObjectHashMap.put("result", intValue * intValue);
-        } catch (Exception e) {
-            stringObjectHashMap.put("error", e.getMessage());
+            response = restTemplate.exchange(baseUrl,
+                    HttpMethod.GET, getHeaders(), String.class);
+            return response.getBody();
+        } catch (Exception ex) {
+            return ex.getMessage();
         }
-        return stringObjectHashMap;
     }
 }
