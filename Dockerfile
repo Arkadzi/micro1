@@ -1,4 +1,4 @@
 FROM openjdk:8
-ADD target/edge.jar /edge.jar
+ADD target/lab1.jar /lab1.jar
 EXPOSE 8085
-ENTRYPOINT ["java", "-jar", "edge.jar"]
+ENTRYPOINT ["java", "-jar", "lab1.jar"]

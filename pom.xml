@@ -44,7 +44,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
-		<finalName>edge</finalName>
+		<finalName>lab1</finalName>
 	</build>
 
 </project>
