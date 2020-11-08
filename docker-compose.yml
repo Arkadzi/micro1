@@ -1,0 +1,17 @@
+version: "3"
+services:
+  calc:
+    image: calculator
+    networks:
+      - api-calc
+  api:
+    image: api
+    ports:
+      - "8080:8080"
+    networks:
+      - api-calc
+    depends_on:
+      - calc
+
+networks:
+  api-calc:
